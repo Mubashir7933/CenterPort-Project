@@ -1,0 +1,21 @@
+[
+    {
+      "id": 1,
+      "name": "Airport Transfer",
+      "description": "Private car pickup & drop-off from Istanbul Airport",
+      "message": "I'd like to book Airport Transfer for my room."
+    },
+    {
+      "id": 2,
+      "name": "Laundry Service",
+      "description": "Same-day wash and fold service",
+      "message": "I'd like to request Laundry Service for my room."
+    },
+    {
+      "id": 3,
+      "name": "City Tour",
+      "description": "Half-day guided tour covering key Istanbul sights",
+      "message": "I'd like to book the City Tour."
+    }
+  ]
+  

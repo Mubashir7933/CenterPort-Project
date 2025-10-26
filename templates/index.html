@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Center Port Hotel</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <h1>Welcome to Center Port</h1>
+  <h2>Guest Services</h2>
+
+  <div class="services">
+    {{range .}}
+    <div class="service-card">
+      <h3>{{.Name}}</h3>
+      <p>{{.Description}}</p>
+      <a href="https://wa.me/905310130559?text={{.Message}}" target="_blank">Request via WhatsApp</a>
+    </div>
+    {{end}}
+  </div>
+</body>
+</html>
