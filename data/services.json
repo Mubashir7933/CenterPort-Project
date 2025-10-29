@@ -13,9 +13,37 @@
     },
     {
       "id": 3,
-      "name": "City Tour",
-      "description": "Half-day guided tour covering key Istanbul sights",
-      "message": "I'd like to book the City Tour."
+      "name": "Room Cleaning",
+      "description": "Request extra room cleaning or housekeeping service.",
+      "message": "I'd like to schedule Room Cleaning for my room."
+    },
+    {
+      "id": 4,
+      "name": "SPA & Wellness",
+      "description": "Relax with our partner spas — massages, Turkish bath, and aromatherapy sessions.",
+      "message": "I'd like to reserve a SPA session."
+    },
+    {
+      "id": 5,
+      "name": "Our Tour Services",
+      "description": "Explore Istanbul and beyond with our trusted travel partners.",
+      "tours": [
+        {
+          "title": "Bosphorus Cruise Tour",
+          "details": "Enjoy a 2-hour Bosphorus cruise with refreshments and scenic views of Istanbul’s skyline.",
+          "message": "I'd like to book the Bosphorus Cruise Tour."
+        },
+        {
+          "title": "Sapanca & Maşukiye Tour",
+          "details": "Full-day escape from the city with lunch included, lake views, and ATV rides.",
+          "message": "I'd like to book the Sapanca & Maşukiye Tour."
+        },
+        {
+          "title": "Historical Old City Tour",
+          "details": "Guided tour of Hagia Sophia, Blue Mosque, Grand Bazaar, and Topkapi Palace.",
+          "message": "I'd like to book the Historical Old City Tour."
+        }
+      ]
     }
   ]
   

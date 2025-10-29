@@ -3,21 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <title>Center Port Hotel</title>
   <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-  <h1>Welcome to Center Port</h1>
-  <h2>Guest Services</h2>
-
-  <div class="services">
-    {{range .}}
-    <div class="service-card">
-      <h3>{{.Name}}</h3>
-      <p>{{.Description}}</p>
-      <a href="https://wa.me/905310130559?text={{.Message}}" target="_blank">Request via WhatsApp</a>
+    <div class="page">
+        <div class="logo-container">
+            <img src="/static/cp.png" alt="Center Port Hotel Logo" class="logo">
+        </div>
+        <h2>Guest Services</h2>
+        
+        <div class="services">
+            {{range .}}
+            <div class="service-card">
+                <h3>{{.Name}}</h3>
+                <p>{{.Description}}</p>
+                
+                {{if .Tours}}
+                <button class="toggle-btn" onclick="toggleTours(this)">View Tour List</button>
+                <div class="tour-list" style="display:none;">
+                    {{range .Tours}}
+                    <div class="tour-item">
+                        <h4>{{.Title}}</h4>
+                        <p>{{.Details}}</p>
+                        <a href="https://wa.me/905310130559?text={{.Message}}" target="_blank">Reserve via WhatsApp</a>
+                    </div>
+                    {{end}}
+                </div>
+                {{else}}
+                <a href="https://wa.me/905310130559?text={{.Message}}" target="_blank">Request via WhatsApp</a>
+                {{end}}
+            </div>
+            {{end}}
+        </div>
     </div>
-    {{end}}
-  </div>
+  
+  <script>
+  function toggleTours(btn) {
+    const list = btn.nextElementSibling;
+    if (list.style.display === "none") {
+      list.style.display = "block";
+      btn.textContent = "Hide Tour List";
+    } else {
+      list.style.display = "none";
+      btn.textContent = "View Tour List";
+    }
+  }
+  </script>
+  
 </body>
 </html>

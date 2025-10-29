@@ -8,11 +8,18 @@ import (
 	"net/http"
 )
 
+type Tour struct {
+	Title   string `json:"title"`
+	Details string `json:"details"`
+	Message string `json:"message"`
+}
+
 type Service struct {
 	ID          int    `json:"id"`
 	Name        string `json:"name"`
 	Description string `json:"description"`
 	Message     string `json:"message"`
+	Tours       []Tour `json:"tours"`
 }
 
 func loadServices() ([]Service, error) {
