@@ -2,55 +2,46 @@ package main
 
 import (
 	"encoding/json"
-	"html/template"
-	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
 )
 
-type Tour struct {
-	Title   string `json:"title"`
-	Details string `json:"details"`
-	Message string `json:"message"`
+type Message struct {
+	Text string `json:"text"`
 }
 
-type Service struct {
-	ID          int    `json:"id"`
-	Name        string `json:"name"`
-	Description string `json:"description"`
-	Message     string `json:"message"`
-	Tours       []Tour `json:"tours"`
+func testHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(Message{Text: "Backend connected successfully!"})
 }
 
-func loadServices() ([]Service, error) {
-	data, err := ioutil.ReadFile("data/services.json")
+func servicesHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+
+	data, err := os.ReadFile("data/services.json")
 	if err != nil {
-		return nil, err
+		http.Error(w, "Failed to load services data", http.StatusInternalServerError)
+		return
 	}
-	var services []Service
-	err = json.Unmarshal(data, &services)
-	return services, err
+
+	w.Write(data)
+}
+
+func enableCORS(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		next.ServeHTTP(w, r)
+	})
 }
 
 func main() {
 	mux := http.NewServeMux()
+	mux.HandleFunc("/api/test", testHandler)
+	mux.HandleFunc("/api/services", servicesHandler)
 
-	// Serve static files
-	fs := http.FileServer(http.Dir("static"))
-	mux.Handle("/static/", http.StripPrefix("/static/", fs))
+	handler := enableCORS(mux)
 
-	// Main page
-	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		services, err := loadServices()
-		if err != nil {
-			http.Error(w, "Failed to load services", http.StatusInternalServerError)
-			return
-		}
-
-		tmpl := template.Must(template.ParseFiles("templates/index.html"))
-		tmpl.Execute(w, services)
-	})
-
-	log.Println("Server running at http://localhost:8080")
-	log.Fatal(http.ListenAndServe(":8080", mux))
+	log.Println("✅ Server running at http://localhost:8080")
+	log.Fatal(http.ListenAndServe(":8080", handler))
 }

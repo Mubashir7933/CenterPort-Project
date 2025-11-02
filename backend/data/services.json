@@ -1,49 +1,33 @@
 [
     {
       "id": 1,
-      "name": "Airport Transfer",
-      "description": "Private car pickup & drop-off from Istanbul Airport",
-      "message": "I'd like to book Airport Transfer for my room."
+      "name": "Room Cleaning",
+      "description": "Daily housekeeping and towel replacement service for your comfort.",
+      "message": "I would like to request room cleaning."
     },
     {
       "id": 2,
       "name": "Laundry Service",
-      "description": "Same-day wash and fold service",
-      "message": "I'd like to request Laundry Service for my room."
+      "description": "Pick-up and delivery laundry service within 24 hours.",
+      "message": "I would like to request laundry service."
     },
     {
       "id": 3,
-      "name": "Room Cleaning",
-      "description": "Request extra room cleaning or housekeeping service.",
-      "message": "I'd like to schedule Room Cleaning for my room."
+      "name": "Bosphorus Tour",
+      "description": "Half-day scenic tour along the Bosphorus with hotel pickup.",
+      "message": "I would like to book the Bosphorus Tour."
     },
     {
       "id": 4,
-      "name": "SPA & Wellness",
-      "description": "Relax with our partner spas — massages, Turkish bath, and aromatherapy sessions.",
-      "message": "I'd like to reserve a SPA session."
+      "name": "Airport Transfer",
+      "description": "Private airport pick-up and drop-off available upon request.",
+      "message": "I would like to request an airport transfer."
     },
     {
       "id": 5,
-      "name": "Our Tour Services",
-      "description": "Explore Istanbul and beyond with our trusted travel partners.",
-      "tours": [
-        {
-          "title": "Bosphorus Cruise Tour",
-          "details": "Enjoy a 2-hour Bosphorus cruise with refreshments and scenic views of Istanbul’s skyline.",
-          "message": "I'd like to book the Bosphorus Cruise Tour."
-        },
-        {
-          "title": "Sapanca & Maşukiye Tour",
-          "details": "Full-day escape from the city with lunch included, lake views, and ATV rides.",
-          "message": "I'd like to book the Sapanca & Maşukiye Tour."
-        },
-        {
-          "title": "Historical Old City Tour",
-          "details": "Guided tour of Hagia Sophia, Blue Mosque, Grand Bazaar, and Topkapi Palace.",
-          "message": "I'd like to book the Historical Old City Tour."
-        }
-      ]
+      "name": "Spa Appointment",
+      "description": "Relaxing massages and wellness treatments available daily.",
+      "message": "I would like to book a spa appointment."
     }
   ]
   
