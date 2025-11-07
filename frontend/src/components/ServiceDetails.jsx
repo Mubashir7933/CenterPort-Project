@@ -2,31 +2,69 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 export default function ServiceDetails() {
-  const { id } = useParams();
-  const [service, setService] = useState(null);
+  const { id } = useParams(); // Get the service ID from the URL
+  const [service, setService] = useState(null); // State to hold service data
   const navigate = useNavigate();
 
   useEffect(() => {
+    // Fetch the specific service based on the ID from the backend
     fetch(`http://localhost:8080/api/services/${id}`)
       .then((res) => res.json())
-      .then((data) => setService(data))
+      .then((data) => setService(data)) // Update state with the fetched service
       .catch((err) => console.error("Failed to load service:", err));
-  }, [id]);
+  }, [id]); // Re-run the effect if the ID changes (i.e., user navigates to another service)
 
-  if (!service)
-    return <div className="text-center mt-20 text-gray-500">UnderWorking...</div>;
+  if (!service) {
+    return <div className="text-center mt-20 text-gray-500">Under Working...</div>;
+  }
+
+  // WhatsApp message
+  const whatsappMessage = `Hello, I am interested in your ${service.name}. Can you provide more details?`;
+  const encodedMessage = encodeURIComponent(whatsappMessage);
+  const whatsappUrl = `https://wa.me/1234567890?text=${encodedMessage}`; // Replace with your hotel's WhatsApp number
 
   return (
-    <div className="min-h-screen bg-white p-8">
-      <button
-        onClick={() => navigate(-1)}
-        className="text-blue-600 mb-6 hover:underline"
-      >
-        ← Back
-      </button>
-
-      <h1 className="text-4xl font-bold text-gray-800 mb-4">{service.name}</h1>
-      <p className="text-gray-600">{service.description}</p>
+    <div className="min-h-screen bg-gray-50 flex justify-center items-start py-16 px-6">
+      <div className="max-w-3xl w-full bg-white rounded-2xl shadow-md p-8">
+        {/* Back Button */}
+        <button
+          onClick={() => navigate(-1)}
+          className="text-blue-600 mb-6 hover:underline"
+        >
+          ← Back
+        </button>
+  
+        {/* Service Title */}
+        <h1 className="text-4xl font-bold text-gray-800 mb-4 text-center">
+          {service.name}
+        </h1>
+  
+        {/* Optional Image */}
+        {service.image && (
+          <img
+            src={service.image}
+            alt={service.name}
+            className="my-6 w-full rounded-lg object-cover shadow-sm"
+          />
+        )}
+  
+        {/* Description */}
+        <p className="text-gray-600 text-lg leading-relaxed text-center mb-8">
+          {service.description}
+        </p>
+  
+        {/* WhatsApp Button */}
+        <div className="flex justify-center">
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-full shadow transition-transform transform hover:scale-105"
+          >
+            💬 Contact us on WhatsApp
+          </a>
+        </div>
+      </div>
     </div>
   );
 }
