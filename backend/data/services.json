@@ -1,33 +1,57 @@
 [
-    {
-      "id": 1,
-      "name": "Room Cleaning",
-      "description": "Daily housekeeping and towel replacement service for your comfort.",
-      "message": "I would like to request room cleaning."
-    },
-    {
-      "id": 2,
-      "name": "Laundry Service",
-      "description": "Pick-up and delivery laundry service within 24 hours.",
-      "message": "I would like to request laundry service."
-    },
-    {
-      "id": 3,
-      "name": "Bosphorus Tour",
-      "description": "Half-day scenic tour along the Bosphorus with hotel pickup.",
-      "message": "I would like to book the Bosphorus Tour."
-    },
-    {
-      "id": 4,
-      "name": "Airport Transfer",
-      "description": "Private airport pick-up and drop-off available upon request.",
-      "message": "I would like to request an airport transfer."
-    },
-    {
-      "id": 5,
-      "name": "Spa Appointment",
-      "description": "Relaxing massages and wellness treatments available daily.",
-      "message": "I would like to book a spa appointment."
-    }
-  ]
-  
+  {
+    "id": 1,
+    "name": "Room Cleaning",
+    "description": "Daily housekeeping and towel replacement service for your comfort.",
+    "message": "I would like to request room cleaning."
+  },
+  {
+    "id": 2,
+    "name": "Laundry Service",
+    "description": "Pick-up and delivery laundry service within 24 hours.",
+    "message": "I would like to request laundry service."
+  },
+  {
+    "id": 3,
+    "name": "Tours",
+    "description": "Discover Istanbul and nearby destinations with our exclusive guided tours.",
+    "tours": [
+      {
+        "id": "3a",
+        "name": "Bosphorus Tour",
+        "description": "A scenic cruise along the Bosphorus Strait, passing iconic landmarks of Istanbul.",
+        "pdf": "/pdfs/bosphorus_tour.pdf",
+        "image": "/images/bosphorus_tour.jpg",
+        "message": "I would like to book the Bosphorus Tour."
+      },
+      {
+        "id": "3b",
+        "name": "Sapanca Tour",
+        "description": "A refreshing day trip to Sapanca Lake and Maşukiye with lunch and transport.",
+        "pdf": "/pdfs/sapanca_tour.pdf",
+        "image": "/images/sapanca_tour.jpg",
+        "message": "I would like to book the Sapanca Tour."
+      },
+      {
+        "id": "3c",
+        "name": "Bursa Tour",
+        "description": "Full-day excursion to the Green City of Bursa, including the Uludağ mountain cable car ride.",
+        "pdf": "/pdfs/bursa_tour.pdf",
+        "image": "/images/bursa_tour.jpg",
+        "message": "I would like to book the Bursa Tour."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Airport Transfer",
+    "description": "Private airport pick-up and drop-off available upon request.",
+    "message": "I would like to request an airport transfer."
+  },
+  {
+    "id": 5,
+    "name": "Spa Appointment",
+    "description": "Relaxing massages and wellness treatments available daily.",
+    "message": "I would like to book a spa appointment."
+  }
+]
