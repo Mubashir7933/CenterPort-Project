@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import ServicesList from "./components/ServicesList";
 import ServiceDetails from "./components/ServiceDetails";
+import ToursList from "./components/ToursList";
 import logo from "./assets/CenterPortHotel.jpg";
 
 
@@ -18,6 +19,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<ServicesList />} />  {/* Home page */}
         <Route path="/services/:id" element={<ServiceDetails />} />  {/* Service details page */}
+        <Route path="/tours" element={<ToursList/>}/>
       </Routes>
     </div>
   );

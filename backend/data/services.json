@@ -46,7 +46,33 @@
     "id": 4,
     "name": "Airport Transfer",
     "description": "Private airport pick-up and drop-off available upon request.",
-    "message": "I would like to request an airport transfer."
+    "note": "All prices are fixed and include tolls and bridge fees.",
+    "transfers": [
+      {
+        "id": "4a",
+        "vehicle": "Standard Taxi",
+        "route": "Istanbul Airport (IST)",
+        "price": "₺1800",
+        "currency": "TRY",
+        "message": "I would like to book a taxi for Istanbul Airport (IST)."
+      },
+      {
+        "id": "4b",
+        "vehicle": "Standard Taxi",
+        "route": "Sabiha Gökçen Airport (SAW)",
+        "price": "₺2100",
+        "currency": "TRY",
+        "message": "I would like to book a taxi for Sabiha Gökçen Airport (SAW)."
+      },
+      {
+        "id": "4c",
+        "vehicle": "Mercedes Vito (6-seater)",
+        "route": "All Istanbul Airports",
+        "price": "€70",
+        "currency": "EUR",
+        "message": "I would like to book a Mercedes Vito transfer."
+      }
+    ]
   },
   {
     "id": 5,

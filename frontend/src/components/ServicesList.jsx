@@ -37,53 +37,21 @@ export default function ServicesList() {
           {services.map((service) => (
             <div
               key={service.id}
-              className="group bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 p-6"
+              onClick={() =>
+                service.name === "Tours"
+                  ? navigate("/tours")
+                  : navigate(`/services/${service.id}`)
+              }
+              className="group cursor-pointer bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 p-6"
             >
               <h3 className="text-2xl font-semibold text-gray-800 group-hover:text-blue-700 mb-3">
                 {service.name}
               </h3>
               <p className="text-gray-600 mb-4">{service.description}</p>
 
-              {/* If this service is Tours, render the subtours list */}
-              {service.name === "Tours" && service.tours ? (
-                <div className="space-y-4">
-                  {service.tours.map((tour) => (
-                    <div key={tour.id} className="border p-3 rounded-lg shadow-sm">
-                      <h4 className="text-xl font-bold mb-1">{tour.name}</h4>
-                      <p className="text-gray-600 text-sm mb-2">{tour.description}</p>
-
-                      {tour.pdf && (
-                        <a
-                          href={tour.pdf}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-blue-600 font-semibold hover:underline block mb-2"
-                        >
-                          📄 View Brochure
-                        </a>
-                      )}
-
-                      <a
-                        href={`https://wa.me/1234567890?text=${encodeURIComponent(
-                          tour.message
-                        )}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-full inline-block"
-                      >
-                        💬 WhatsApp
-                      </a>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <button
-                  onClick={() => navigate(`/services/${service.id}`)}
-                  className="mt-6 bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded-lg transition w-full"
-                >
-                  View Details
-                </button>
-              )}
+              <button className="mt-6 bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded-lg transition w-full">
+                {service.name === "Tours" ? "View Tours" : "View Details"}
+              </button>
             </div>
           ))}
         </div>

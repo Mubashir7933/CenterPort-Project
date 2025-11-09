@@ -18,13 +18,23 @@ type Tour struct {
 	Message     string `json:"message"`
 }
 
+type Transfer struct {
+	ID       string `json:"id"`
+	Vehicle  string `json:"vehicle"`
+	Route    string `json:"route"`
+	Price    string `json:"price"`
+	Currency string `json:"currency"`
+	Message  string `json:"message"`
+}
+
 type Service struct {
-	ID          int    `json:"id"`
-	Name        string `json:"name"`
-	Description string `json:"description"`
-	Image       string `json:"image"`
-	Message     string `json:"message"`
-	Tours       []Tour `json:"tours,omitempty"`
+	ID          int        `json:"id"`
+	Name        string     `json:"name"`
+	Description string     `json:"description"`
+	Image       string     `json:"image"`
+	Message     string     `json:"message"`
+	Tours       []Tour     `json:"tours,omitempty"`
+	Transfers   []Transfer `json:"transfers,omitempty"`
 }
 
 type Message struct {
