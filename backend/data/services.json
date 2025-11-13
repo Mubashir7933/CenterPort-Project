@@ -1,14 +1,38 @@
 [
   {
     "id": 1,
-    "name": "Room Cleaning",
+    "name": "Housekeeping Service",
     "description": "Daily housekeeping and towel replacement service for your comfort.",
     "message": "I would like to request room cleaning."
   },
   {
     "id": 2,
     "name": "Laundry Service",
-    "description": "Pick-up and delivery laundry service within 24 hours.",
+    "description": "Pick-up and delivery laundry service with ironing included.",
+    "details": {
+      "pricing": {
+        "base_rate_per_kg": 600,
+        "currency": "₺",
+        "notes": "Price applies for both wash and iron service."
+      },
+      "delivery_options": [
+        {
+          "type": "Same Day",
+          "condition": "Laundry given in the morning",
+          "delivery_time": "Within 24 hours"
+        },
+        {
+          "type": "Next Morning",
+          "condition": "Laundry given in the evening",
+          "delivery_time": "Delivered next morning"
+        }
+      ],
+      "includes": [
+        "Washing",
+        "Ironing",
+        "Pick-up & Delivery"
+      ]
+    },
     "message": "I would like to request laundry service."
   },
   {
@@ -28,7 +52,7 @@
         "id": "3b",
         "name": "Sapanca Tour",
         "description": "A refreshing day trip to Sapanca Lake and Maşukiye with lunch and transport.",
-        "pdf": "/pdfs/sapanca_tour.pdf",
+        "pdf": "/pdf/sapanca_tour.pdf",
         "image": "/images/sapanca_tour.jpg",
         "message": "I would like to book the Sapanca Tour."
       },

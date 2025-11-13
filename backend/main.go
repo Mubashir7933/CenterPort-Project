@@ -18,6 +18,17 @@ type Tour struct {
 	Message     string `json:"message"`
 }
 
+type Details struct {
+	Pricing         Pricing          `json:"pricing"`
+	DeliveryOptions []DeliveryOption `json:"delivery_options"`
+	Includes        []string         `json:"includes"`
+}
+type Pricing struct {
+	BaseRatePerKg int    `json:"base_rate_per_kg"`
+	Currency      string `json:"currency"`
+	Notes         string `json:"notes"`
+}
+
 type Transfer struct {
 	ID       string `json:"id"`
 	Vehicle  string `json:"vehicle"`
@@ -25,6 +36,12 @@ type Transfer struct {
 	Price    string `json:"price"`
 	Currency string `json:"currency"`
 	Message  string `json:"message"`
+}
+
+type DeliveryOption struct {
+	Type         string `json:"type"`
+	Condition    string `json:"condition"`
+	DeliveryTime string `json:"delivery_time"`
 }
 
 type Service struct {
@@ -35,6 +52,7 @@ type Service struct {
 	Message     string     `json:"message"`
 	Tours       []Tour     `json:"tours,omitempty"`
 	Transfers   []Transfer `json:"transfers,omitempty"`
+	Details     *Details   `json:"details,omitempty"`
 }
 
 type Message struct {
