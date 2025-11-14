@@ -65,15 +65,37 @@ func testHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(Message{Text: "Backend connected successfully!"})
 }
 
-// --- Return all services ---
+// --- Return all services (with language support) ---
 func servicesHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
-	data, err := os.ReadFile("data/services.json")
+	// Read lang query from frontend (e.g. ?lang=ar)
+	lang := r.URL.Query().Get("lang")
+	if lang == "" {
+		lang = "en"
+	}
+
+	// Map available language files
+	fileMap := map[string]string{
+		"en": "data/services_en.json",
+		"ar": "data/services_ar.json",
+		"ru": "data/services_ru.json",
+		"tr": "data/services_tr.json",
+	}
+
+	filePath, ok := fileMap[lang]
+	if !ok {
+		filePath = fileMap["en"]
+	}
+
+	log.Printf("📄 Serving %s for language: %s", filePath, lang)
+
+	data, err := os.ReadFile(filePath)
 	if err != nil {
 		http.Error(w, "Failed to load services data", http.StatusInternalServerError)
 		return
 	}
+
 	w.Write(data)
 }
 

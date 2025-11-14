@@ -1,0 +1,108 @@
+[
+    {
+      "id": 1,
+      "name": "خدمة تنظيف الغرف",
+      "description": "تنظيف يومي واستبدال المناشف لراحتك.",
+      "message": "أود طلب تنظيف الغرفة."
+    },
+    {
+      "id": 2,
+      "name": "خدمة الغسيل",
+      "description": "خدمة استلام وتسليم الغسيل مع الكي متضمنة.",
+      "details": {
+        "pricing": {
+          "base_rate_per_kg": 600,
+          "currency": "₺",
+          "notes": "السعر يشمل الغسيل والكي."
+        },
+        "delivery_options": [
+          {
+            "type": "نفس اليوم",
+            "condition": "إذا تم تسليم الغسيل في الصباح",
+            "delivery_time": "خلال 24 ساعة"
+          },
+          {
+            "type": "صباح اليوم التالي",
+            "condition": "إذا تم تسليم الغسيل في المساء",
+            "delivery_time": "يتم التسليم صباح اليوم التالي"
+          }
+        ],
+        "includes": [
+          "غسيل",
+          "كي",
+          "استلام وتسليم"
+        ]
+      },
+      "message": "أود طلب خدمة الغسيل."
+    },
+    {
+      "id": 3,
+      "name": "الجولات السياحية",
+      "description": "اكتشف إسطنبول والمناطق القريبة من خلال جولاتنا السياحية الحصرية مع مرشدين محترفين.",
+      "tours": [
+        {
+          "id": "3a",
+          "name": "جولة البوسفور",
+          "description": "رحلة بحرية خلابة على طول مضيق البوسفور مرورًا بمعالم إسطنبول الشهيرة.",
+          "pdf": "/pdfs/bosphorus_tour.pdf",
+          "image": "/images/bosphorus_tour.jpg",
+          "message": "أود حجز جولة البوسفور."
+        },
+        {
+          "id": "3b",
+          "name": "جولة سبانجا",
+          "description": "رحلة يومية منعشة إلى بحيرة سبانجا ومعشوقية تتضمن الغداء والنقل.",
+          "pdf": "/pdf/sapanca_tour.pdf",
+          "image": "/images/sapanca_tour.jpg",
+          "message": "أود حجز جولة سبانجا."
+        },
+        {
+          "id": "3c",
+          "name": "جولة بورصة",
+          "description": "رحلة يوم كامل إلى مدينة بورصة الخضراء، تتضمن ركوب التلفريك في جبل أولوداغ.",
+          "pdf": "/pdfs/bursa_tour.pdf",
+          "image": "/images/bursa_tour.jpg",
+          "message": "أود حجز جولة بورصة."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "خدمة النقل من المطار",
+      "description": "خدمة نقل خاصة من وإلى المطار عند الطلب.",
+      "note": "جميع الأسعار ثابتة وتشمل رسوم الطرق والجسور.",
+      "transfers": [
+        {
+          "id": "4a",
+          "vehicle": "تاكسي عادي",
+          "route": "Istanbul Airport (IST)",
+          "price": "₺1800",
+          "currency": "TRY",
+          "message": "أود حجز تاكسي لمطار إسطنبول (IST)."
+        },
+        {
+          "id": "4b",
+          "vehicle": "تاكسي عادي",
+          "route": "Sabiha Gökçen Airport (SAW)",
+          "price": "₺2100",
+          "currency": "TRY",
+          "message": "أود حجز تاكسي لمطار صبيحة غوكتشن (SAW)."
+        },
+        {
+          "id": "4c",
+          "vehicle": "Mercedes Vito (6-seater)",
+          "route": "All Istanbul Airports",
+          "price": "€70",
+          "currency": "EUR",
+          "message": "أود حجز نقل بسيارة مرسيدس فيتو."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "حجز سبا",
+      "description": "جلسات تدليك وعلاجات استرخاء متوفرة يوميًا.",
+      "message": "أود حجز موعد في السبا."
+    }
+  ]
+  

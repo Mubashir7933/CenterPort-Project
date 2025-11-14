@@ -1,0 +1,108 @@
+[
+    {
+      "id": 1,
+      "name": "Oda Temizliği Hizmeti",
+      "description": "Rahatınız için günlük oda temizliği ve havlu değişimi hizmeti.",
+      "message": "Oda temizliği talep etmek istiyorum."
+    },
+    {
+      "id": 2,
+      "name": "Çamaşırhane Hizmeti",
+      "description": "Ütüleme dahil çamaşır yıkama, teslim alma ve teslim etme hizmeti.",
+      "details": {
+        "pricing": {
+          "base_rate_per_kg": 600,
+          "currency": "₺",
+          "notes": "Fiyat hem yıkama hem ütüleme hizmetini kapsar."
+        },
+        "delivery_options": [
+          {
+            "type": "Aynı Gün",
+            "condition": "Çamaşır sabah teslim edilirse",
+            "delivery_time": "24 saat içinde teslim"
+          },
+          {
+            "type": "Ertesi Sabah",
+            "condition": "Çamaşır akşam teslim edilirse",
+            "delivery_time": "Ertesi sabah teslim edilir"
+          }
+        ],
+        "includes": [
+          "Yıkama",
+          "Ütüleme",
+          "Teslim Alma & Teslim Etme"
+        ]
+      },
+      "message": "Çamaşırhane hizmeti talep etmek istiyorum."
+    },
+    {
+      "id": 3,
+      "name": "Turlar",
+      "description": "İstanbul ve çevresini özel rehberli turlarımızla keşfedin.",
+      "tours": [
+        {
+          "id": "3a",
+          "name": "Boğaz Turu",
+          "description": "İstanbul’un simgesel yerlerinden geçerek Boğaz boyunca manzaralı bir tekne turu.",
+          "pdf": "/pdfs/bosphorus_tour.pdf",
+          "image": "/images/bosphorus_tour.jpg",
+          "message": "Boğaz turu rezervasyonu yapmak istiyorum."
+        },
+        {
+          "id": "3b",
+          "name": "Sapanca Turu",
+          "description": "Öğle yemeği ve ulaşım dahil Sapanca Gölü ve Maşukiye’ye ferahlatıcı bir günlük gezi.",
+          "pdf": "/pdf/sapanca_tour.pdf",
+          "image": "/images/sapanca_tour.jpg",
+          "message": "Sapanca turu rezervasyonu yapmak istiyorum."
+        },
+        {
+          "id": "3c",
+          "name": "Bursa Turu",
+          "description": "Uludağ teleferik gezisi dahil Yeşil Şehir Bursa’ya tam günlük bir gezi.",
+          "pdf": "/pdfs/bursa_tour.pdf",
+          "image": "/images/bursa_tour.jpg",
+          "message": "Bursa turu rezervasyonu yapmak istiyorum."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Havalimanı Transferi",
+      "description": "Talep üzerine özel havalimanı karşılama ve bırakma hizmeti.",
+      "note": "Tüm fiyatlar sabittir ve köprü ile otoyol ücretlerini içerir.",
+      "transfers": [
+        {
+          "id": "4a",
+          "vehicle": "Standart Taksi",
+          "route": "Istanbul Airport (IST)",
+          "price": "₺1800",
+          "currency": "TRY",
+          "message": "İstanbul Havalimanı (IST) için taksi rezervasyonu yapmak istiyorum."
+        },
+        {
+          "id": "4b",
+          "vehicle": "Standart Taksi",
+          "route": "Sabiha Gökçen Airport (SAW)",
+          "price": "₺2100",
+          "currency": "TRY",
+          "message": "Sabiha Gökçen Havalimanı (SAW) için taksi rezervasyonu yapmak istiyorum."
+        },
+        {
+          "id": "4c",
+          "vehicle": "Mercedes Vito (6 kişilik)",
+          "route": "All Istanbul Airports",
+          "price": "€70",
+          "currency": "EUR",
+          "message": "Mercedes Vito transferi rezervasyonu yapmak istiyorum."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Spa Randevusu",
+      "description": "Rahatlatıcı masajlar ve wellness hizmetleri her gün mevcuttur.",
+      "message": "Spa randevusu almak istiyorum."
+    }
+  ]
+  
