@@ -1,0 +1,63 @@
+{
+  "app": {
+    "services": "Misafir Hizmetleri",
+    "loading": "Hizmetler yükleniyor...",
+    "viewDetails": "Detayları Gör",
+    "viewTours": "Turları Gör"
+  },
+
+  "tours": {
+    "loading": "Turlar yükleniyor...",
+    "back": "Hizmetlere Geri Dön",
+    "title": "Mevcut Turlar",
+    "brochure": "Broşürü Görüntüle",
+    "whatsapp": "WhatsApp ile İletişime Geç"
+  },
+
+  "details": {
+    "loading": "Hizmet yükleniyor...",
+    "back": "Geri",
+    "pricing": "Fiyatlandırma",
+    "perKg": "kg başına",
+    "deliveryOptions": "Teslimat Seçenekleri",
+    "included": "Dahil Olanlar",
+    "transferOptions": "Mevcut Transfer Seçenekleri",
+    "bookNow": "Şimdi Rezervasyon Yap!",
+    "moreOnWhatsapp": "WhatsApp üzerinden daha fazla bilgi",
+    "whatsappMessage": "Merhaba, {{service}} hizmetinizle ilgileniyorum. Daha fazla bilgi verebilir misiniz?"
+  },
+  "room": {
+  "title": "Oda Temizliği Hizmeti",
+  "description": "Her gün temiz ve ferah bir oda ortamının keyfini çıkarın. Housekeeping ekibimiz günlük temizlik, havlu değişimi ve çarşaf bakımını garanti eder.",
+
+  "whatsIncluded": "Hizmete Dahil Olanlar",
+  "inc1": "Günlük havlu değişimi",
+  "inc2": "Yatak düzeltme ve çarşaf değişimi (2 günde bir)",
+  "inc3": "Banyo temizliği ve çöp toplama",
+  "inc4": "Toz alma ve zemin temizliği",
+
+  "cleaningTime": "Tercih Edilen Temizlik Saati",
+  "cleaningMorning": "Sabah (09:00 – 12:00)",
+  "cleaningAfternoon": "Öğleden Sonra (12:00 – 15:00)",
+
+  "cleaningMorningMsg": "Odamın sabah saatlerinde temizlenmesini rica ediyorum.",
+  "cleaningAfternoonMsg": "Odamın öğleden sonra temizlenmesini rica ediyorum.",
+
+  "addons": "Ek Hizmetler",
+  "extraTowels": "Ek Havlular",
+  "extraTowelsMsg": "Odam için ek havlu rica ediyorum.",
+
+  "linenChange": "Bugün Çarşaf Değişimi",
+  "linenChangeMsg": "Bugün odamda çarşaf değişimi yapılmasını rica ediyorum.",
+
+  "deepCleaning": "Detaylı Temizlik",
+  "deepCleaningMsg": "Odamda detaylı temizlik yapılmasını rica ediyorum.",
+
+  "request": "Talep Et",
+
+  "ecoNote": "🌿 Su ve enerji tasarrufuna yardımcı olun — havlularınızı tekrar kullanmak istiyorsanız askıya asın. Zemine bırakılan havlular otomatik olarak değiştirilir.",
+
+  "mainMessage": "Odam için temizlik hizmeti talep etmek istiyorum.",
+  "contactBtn": "Housekeeping ile İletişime Geç"
+}
+}

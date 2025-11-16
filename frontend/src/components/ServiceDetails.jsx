@@ -1,37 +1,53 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function ServiceDetails() {
   const { id } = useParams();
   const [service, setService] = useState(null);
   const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/services/${id}`)
+    fetch(`http://localhost:8080/api/services/${id}?lang=${i18n.language}`)
       .then((res) => res.json())
       .then((data) => setService(data))
       .catch((err) => console.error("Failed to load service:", err));
-  }, [id]);
+  }, [id, i18n.language]);
 
   if (!service)
-    return <div className="text-center mt-20 text-gray-500">Under Working...</div>;
+    return (
+      <div className="text-center mt-20 text-gray-500">
+        {t("details.loading")}
+      </div>
+    );
 
-  const whatsappMessage = `Hello, I am interested in your ${service.name}. Can you provide more details?`;
-  const encodedMessage = encodeURIComponent(whatsappMessage);
-  const whatsappUrl = `https://wa.me/1234567890?text=${encodedMessage}`;
+  // WhatsApp message (translated)
+  const whatsappMessage = t("details.whatsappMessage", {
+    service: service.name,
+  });
+
+  const whatsappUrl = `https://wa.me/1234567890?text=${encodeURIComponent(
+    whatsappMessage
+  )}`;
 
   return (
-    <div className="min-h-screen bg-gray-50 flex justify-center items-start py-16 px-6">
+    <div
+      className={`min-h-screen bg-gray-50 flex justify-center items-start py-16 px-6 ${
+        i18n.language === "ar" ? "rtl" : ""
+      }`}
+    >
       <div className="max-w-3xl w-full bg-white rounded-2xl shadow-md p-8">
+
         {/* Back Button */}
         <button
           onClick={() => navigate(-1)}
           className="text-blue-600 mb-6 hover:underline"
         >
-          ← Back
+          ← {t("details.back")}
         </button>
 
-        {/* Service Title */}
+        {/* Title */}
         <h1 className="text-4xl font-bold text-gray-800 mb-4 text-center">
           {service.name}
         </h1>
@@ -50,36 +66,52 @@ export default function ServiceDetails() {
           {service.description}
         </p>
 
-        {/* ✅ Laundry Service Section */}
-        {service.name === "Laundry Service" && service.details && (
+        {/* ---------- Laundry Section ---------- */}
+        {service.details && (
           <div className="space-y-8">
+
             {/* Pricing */}
             <div className="bg-blue-50 border border-blue-100 p-5 rounded-xl">
-              <h2 className="text-2xl font-semibold text-blue-700 mb-3">Pricing</h2>
+              <h2 className="text-2xl font-semibold text-blue-700 mb-3">
+                {t("details.pricing")}
+              </h2>
               <p className="text-gray-700 text-lg">
-                <strong>{service.details.pricing.base_rate_per_kg} {service.details.pricing.currency}</strong> per kg
+                <strong>
+                  {service.details.pricing.base_rate_per_kg}{" "}
+                  {service.details.pricing.currency}
+                </strong>{" "}
+                {t("details.perKg")}
               </p>
-              <p className="text-gray-500 text-sm mt-1">{service.details.pricing.notes}</p>
+              <p className="text-gray-500 text-sm mt-1">
+                {service.details.pricing.notes}
+              </p>
             </div>
 
             {/* Delivery Options */}
             <div className="bg-green-50 border border-green-100 p-5 rounded-xl">
-              <h2 className="text-2xl font-semibold text-green-700 mb-3">Delivery Options</h2>
-              {service.details.delivery_options.map((option, index) => (
+              <h2 className="text-2xl font-semibold text-green-700 mb-3">
+                {t("details.deliveryOptions")}
+              </h2>
+
+              {service.details.delivery_options?.map((option, index) => (
                 <div key={index} className="mb-3">
                   <p className="font-semibold text-gray-800">{option.type}</p>
                   <p className="text-gray-600 text-sm">
-                    {option.condition} — <span className="italic">{option.delivery_time}</span>
+                    {option.condition} —{" "}
+                    <span className="italic">{option.delivery_time}</span>
                   </p>
                 </div>
               ))}
             </div>
 
-            {/* Included Services */}
+            {/* Included */}
             <div className="bg-yellow-50 border border-yellow-100 p-5 rounded-xl">
-              <h2 className="text-2xl font-semibold text-yellow-700 mb-3">Included</h2>
+              <h2 className="text-2xl font-semibold text-yellow-700 mb-3">
+                {t("details.included")}
+              </h2>
+
               <ul className="list-disc list-inside text-gray-700">
-                {service.details.includes.map((item, i) => (
+                {service.details.includes?.map((item, i) => (
                   <li key={i}>{item}</li>
                 ))}
               </ul>
@@ -87,50 +119,45 @@ export default function ServiceDetails() {
           </div>
         )}
 
-        {/* ✅ Airport Transfers Section (unchanged) */}
-        {service.name === "Airport Transfer" && service.transfers && (
+        {/* ---------- Airport Transfers Section ---------- */}
+        {service.transfers && (
           <div className="mt-8">
             <h2 className="text-2xl font-bold text-center text-gray-800 mb-4">
-              Available Transfer Options
+              {t("details.transferOptions")}
             </h2>
 
             <div className="space-y-4">
-              {service.transfers.map((t) => (
+              {service.transfers.map((tItem) => (
                 <div
-                  key={t.id}
+                  key={tItem.id}
                   className="border rounded-xl p-4 shadow-sm flex flex-col sm:flex-row justify-between items-center"
                 >
                   <div className="text-center sm:text-left">
                     <h3 className="text-lg font-semibold text-gray-800">
-                      {t.vehicle}
+                      {tItem.vehicle}
                     </h3>
-                    <p className="text-gray-600 text-sm">{t.route}</p>
+                    <p className="text-gray-600 text-sm">{tItem.route}</p>
                   </div>
 
                   <div className="flex items-center gap-4 mt-3 sm:mt-0">
                     <span className="text-blue-700 font-semibold text-lg">
-                      {t.price}
+                      {tItem.price}
                     </span>
+
                     <a
                       href={`https://wa.me/1234567890?text=${encodeURIComponent(
-                        t.message
+                        tItem.message
                       )}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-full"
                     >
-                      💬 Book Now!
+                      💬 {t("details.bookNow")}
                     </a>
                   </div>
                 </div>
               ))}
             </div>
-
-            {service.note && (
-              <p className="text-sm text-gray-500 mt-4 text-center">
-                {service.note}
-              </p>
-            )}
           </div>
         )}
 
@@ -142,7 +169,7 @@ export default function ServiceDetails() {
             rel="noopener noreferrer"
             className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-full shadow transition-transform transform hover:scale-105"
           >
-            💬 More details on WhatsApp
+            💬 {t("details.moreOnWhatsapp")}
           </a>
         </div>
       </div>

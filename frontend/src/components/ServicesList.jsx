@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function ServicesList() {
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/services")
+    setLoading(true);
+
+    fetch(`http://localhost:8080/api/services?lang=${i18n.language}`)
       .then((res) => res.json())
       .then((data) => {
         setServices(data);
@@ -17,12 +21,12 @@ export default function ServicesList() {
         console.error("Failed to fetch services:", err);
         setLoading(false);
       });
-  }, []);
+  }, [i18n.language]);
 
   if (loading)
     return (
       <div className="text-center mt-20 text-gray-500 animate-pulse">
-        Loading services...
+        {t("app.loading")}
       </div>
     );
 
@@ -30,7 +34,7 @@ export default function ServicesList() {
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white py-12 px-4">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl font-bold text-center text-blue-700 mb-10">
-          Guest Services
+          {t("app.services")}
         </h2>
 
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -38,7 +42,7 @@ export default function ServicesList() {
             <div
               key={service.id}
               onClick={() =>
-                service.name === "Tours"
+                service.id === 3
                   ? navigate("/tours")
                   : navigate(`/services/${service.id}`)
               }
@@ -50,7 +54,9 @@ export default function ServicesList() {
               <p className="text-gray-600 mb-4">{service.description}</p>
 
               <button className="mt-6 bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded-lg transition w-full">
-                {service.name === "Tours" ? "View Tours" : "View Details"}
+                {service.name === "Tours"
+                  ? t("app.viewTours")
+                  : t("app.viewDetails")}
               </button>
             </div>
           ))}

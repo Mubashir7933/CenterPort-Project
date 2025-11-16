@@ -23,6 +23,7 @@ type Details struct {
 	DeliveryOptions []DeliveryOption `json:"delivery_options"`
 	Includes        []string         `json:"includes"`
 }
+
 type Pricing struct {
 	BaseRatePerKg int    `json:"base_rate_per_kg"`
 	Currency      string `json:"currency"`
@@ -59,23 +60,10 @@ type Message struct {
 	Text string `json:"text"`
 }
 
-// --- Test Endpoint ---
-func testHandler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(Message{Text: "Backend connected successfully!"})
-}
-
-// --- Return all services (with language support) ---
-func servicesHandler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-
-	// Read lang query from frontend (e.g. ?lang=ar)
+// 🔥 Unified function to get correct file path based on ?lang=
+func getDataFilePath(r *http.Request) string {
 	lang := r.URL.Query().Get("lang")
-	if lang == "" {
-		lang = "en"
-	}
 
-	// Map available language files
 	fileMap := map[string]string{
 		"en": "data/services_en.json",
 		"ar": "data/services_ar.json",
@@ -83,37 +71,59 @@ func servicesHandler(w http.ResponseWriter, r *http.Request) {
 		"tr": "data/services_tr.json",
 	}
 
-	filePath, ok := fileMap[lang]
-	if !ok {
-		filePath = fileMap["en"]
+	if path, ok := fileMap[lang]; ok {
+		return path
 	}
 
-	log.Printf("📄 Serving %s for language: %s", filePath, lang)
+	return fileMap["en"] // fallback
+}
 
-	data, err := os.ReadFile(filePath)
+// 🔥 Load and unmarshal services for any handler
+func loadServices(r *http.Request) ([]Service, error) {
+	file := getDataFilePath(r)
+
+	data, err := os.ReadFile(file)
 	if err != nil {
-		http.Error(w, "Failed to load services data", http.StatusInternalServerError)
+		return nil, err
+	}
+
+	var services []Service
+	if err := json.Unmarshal(data, &services); err != nil {
+		return nil, err
+	}
+
+	return services, nil
+}
+
+// Test endpoint
+func testHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(Message{Text: "Backend connected successfully!"})
+}
+
+// 🔥 /api/services — All services
+func servicesHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+
+	file := getDataFilePath(r)
+	data, err := os.ReadFile(file)
+	if err != nil {
+		http.Error(w, "Failed to load services", http.StatusInternalServerError)
 		return
 	}
 
 	w.Write(data)
 }
 
-// --- Return single service by ID ---
+// 🔥 /api/services/:id — Single service
 func serviceByIDHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
 	id := strings.TrimPrefix(r.URL.Path, "/api/services/")
 
-	data, err := os.ReadFile("data/services.json")
+	services, err := loadServices(r)
 	if err != nil {
-		http.Error(w, "Failed to load services data", http.StatusInternalServerError)
-		return
-	}
-
-	var services []Service
-	if err := json.Unmarshal(data, &services); err != nil {
-		http.Error(w, "Failed to parse services data", http.StatusInternalServerError)
+		http.Error(w, "Failed to load services", http.StatusInternalServerError)
 		return
 	}
 
@@ -127,22 +137,16 @@ func serviceByIDHandler(w http.ResponseWriter, r *http.Request) {
 	http.Error(w, "Service not found", http.StatusNotFound)
 }
 
-// --- Return only tours for a given service ---
+// 🔥 /api/services/:id/tours — Tours of one service
 func toursByServiceIDHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
 	id := strings.TrimPrefix(r.URL.Path, "/api/services/")
 	id = strings.TrimSuffix(id, "/tours")
 
-	data, err := os.ReadFile("data/services.json")
+	services, err := loadServices(r)
 	if err != nil {
-		http.Error(w, "Failed to load services data", http.StatusInternalServerError)
-		return
-	}
-
-	var services []Service
-	if err := json.Unmarshal(data, &services); err != nil {
-		http.Error(w, "Failed to parse services data", http.StatusInternalServerError)
+		http.Error(w, "Failed to load services", http.StatusInternalServerError)
 		return
 	}
 
@@ -153,10 +157,10 @@ func toursByServiceIDHandler(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	http.Error(w, "Tours not found for this service", http.StatusNotFound)
+	http.Error(w, "Tours not found", http.StatusNotFound)
 }
 
-// --- Enable CORS ---
+// CORS
 func enableCORS(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Access-Control-Allow-Origin", "*")
@@ -169,11 +173,12 @@ func enableCORS(next http.Handler) http.Handler {
 	})
 }
 
+// MAIN
 func main() {
 	mux := http.NewServeMux()
 
-	// Routes
 	mux.HandleFunc("/api/test", testHandler)
+
 	mux.HandleFunc("/api/services/", func(w http.ResponseWriter, r *http.Request) {
 		if strings.HasSuffix(r.URL.Path, "/tours") {
 			toursByServiceIDHandler(w, r)
@@ -181,9 +186,9 @@ func main() {
 			serviceByIDHandler(w, r)
 		}
 	})
+
 	mux.HandleFunc("/api/services", servicesHandler)
 
-	// Wrap with CORS
 	handler := enableCORS(mux)
 
 	log.Println("✅ Server running at http://localhost:8080")

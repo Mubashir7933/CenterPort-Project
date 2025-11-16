@@ -1,0 +1,31 @@
+{
+  "app": {
+    "services": "Guest Services",
+    "loading": "Loading services...",
+    "viewDetails": "View Details",
+    "viewTours": "View Tours"
+  },
+
+  "tours": {
+    "loading": "Loading tours...",
+    "back": "Back to Services",
+    "title": "Available Tours",
+    "brochure": "View Brochure",
+    "whatsapp": "Contact on WhatsApp"
+  },
+
+  "details": {
+    "loading": "Loading service...",
+    "back": "Back",
+    "pricing": "Pricing",
+    "perKg": "per kg",
+    "deliveryOptions": "Delivery Options",
+    "included": "Included",
+    "transferOptions": "Available Transfer Options",
+    "bookNow": "Book Now!",
+    "moreOnWhatsapp": "More details on WhatsApp",
+    "whatsappMessage": "Hello, I am interested in your {{service}}. Can you provide more details?"
+  },
+  "room": { "title": "Housekeeping Service", "description": "Enjoy a spotless and refreshing room environment every day. Our housekeeping team ensures your comfort through daily cleaning, towel replacement, and linen care.", "whatsIncluded": "What’s Included", "inc1": "Daily towel replacement", "inc2": "Bed making and linen change (every 2 days)", "inc3": "Bathroom cleaning and trash removal", "inc4": "Dusting and floor vacuuming", "cleaningTime": "Preferred Cleaning Time", "cleaningMorning": "Morning (9 AM – 12 PM)", "cleaningAfternoon": "Afternoon (12 PM – 3 PM)", "cleaningMorningMsg": "I would like my room cleaned in the morning.", "cleaningAfternoonMsg": "I would like my room cleaned in the afternoon.", "addons": "Add-ons", "extraTowels": "Extra Towels", "extraTowelsMsg": "I would like extra towels for my room.", "linenChange": "Linen Change Today", "linenChangeMsg": "Please schedule a linen change for my room today.", "deepCleaning": "Deep Cleaning", "deepCleaningMsg": "Please schedule a deep cleaning for my room.", "request": "Request", "ecoNote": "🌿 Help us save water and energy — hang your towels to reuse them. Towels on the floor will be replaced automatically.", "mainMessage": "I would like to request housekeeping service for my room.", "contactBtn": "Contact Housekeeping" }
+  
+}

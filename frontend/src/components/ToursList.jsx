@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function ToursList() {
   const [tours, setTours] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/services/3/tours")
+    setLoading(true);
+
+    fetch(`http://localhost:8080/api/services/3/tours?lang=${i18n.language}`)
       .then((res) => res.json())
       .then((data) => {
         setTours(data);
@@ -17,12 +21,12 @@ export default function ToursList() {
         console.error("Failed to fetch tours:", err);
         setLoading(false);
       });
-  }, []);
+  }, [i18n.language]);
 
   if (loading)
     return (
       <div className="text-center mt-20 text-gray-500 animate-pulse">
-        Loading tours...
+        {t("tours.loading")}
       </div>
     );
 
@@ -33,11 +37,11 @@ export default function ToursList() {
           onClick={() => navigate(-1)}
           className="text-blue-600 mb-6 hover:underline"
         >
-          ← Back to Services
+          ← {t("tours.back")}
         </button>
 
         <h1 className="text-4xl font-bold text-center text-blue-700 mb-10">
-          Available Tours
+          {t("tours.title")}
         </h1>
 
         <div className="space-y-6">
@@ -49,6 +53,7 @@ export default function ToursList() {
               <h2 className="text-2xl font-semibold text-gray-800 mb-2">
                 {tour.name}
               </h2>
+
               <p className="text-gray-600 mb-4">{tour.description}</p>
 
               {tour.image && (
@@ -66,19 +71,17 @@ export default function ToursList() {
                   rel="noopener noreferrer"
                   className="text-blue-600 font-semibold hover:underline block mb-4"
                 >
-                  📄 View Brochure
+                  📄 {t("tours.brochure")}
                 </a>
               )}
 
               <a
-                href={`https://wa.me/1234567890?text=${encodeURIComponent(
-                  tour.message
-                )}`}
+                href={`https://wa.me/1234567890?text=${encodeURIComponent(tour.message)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-full inline-block"
               >
-                💬 Contact on WhatsApp
+                💬 {t("tours.whatsapp")}
               </a>
             </div>
           ))}
