@@ -81,14 +81,17 @@ func getDataFilePath(r *http.Request) string {
 // 🔥 Load and unmarshal services for any handler
 func loadServices(r *http.Request) ([]Service, error) {
 	file := getDataFilePath(r)
+	log.Println("📂 Trying to read file:", file)
 
 	data, err := os.ReadFile(file)
 	if err != nil {
+		log.Println("❌ ERROR reading file:", file, err)
 		return nil, err
 	}
 
 	var services []Service
 	if err := json.Unmarshal(data, &services); err != nil {
+		log.Println("❌ ERROR parsing JSON:", file, err)
 		return nil, err
 	}
 
@@ -108,6 +111,7 @@ func servicesHandler(w http.ResponseWriter, r *http.Request) {
 	file := getDataFilePath(r)
 	data, err := os.ReadFile(file)
 	if err != nil {
+		log.Println("❌ ERROR loading services:", err)
 		http.Error(w, "Failed to load services", http.StatusInternalServerError)
 		return
 	}
