@@ -177,7 +177,6 @@ func enableCORS(next http.Handler) http.Handler {
 	})
 }
 
-// MAIN
 func main() {
 	mux := http.NewServeMux()
 
@@ -195,14 +194,14 @@ func main() {
 
 	handler := enableCORS(mux)
 
-	// 🔥 Get port from Railway environment
+	// 🔥 Get port from environment
 	port := os.Getenv("PORT")
 	if port == "" {
-		port = "8080" // local fallback
+		port = "8080"
 	}
 
 	log.Println("🚀 Server running on port:", port)
 
-	// 🔥 Bind to 0.0.0.0 so Railway can expose it
+	// 🔥 Bind to 0.0.0.0 so hosting can expose it
 	log.Fatal(http.ListenAndServe("0.0.0.0:"+port, handler))
 }
