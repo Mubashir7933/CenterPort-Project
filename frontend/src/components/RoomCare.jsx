@@ -6,7 +6,7 @@ export default function RoomCare() {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
 
-  const whatsappNumber = "+90 533 466 76 67";
+  const whatsappNumber = "+905334667667";
 
   const cleaningOptions = [
     { id: 1, label: t("room.cleaningMorning"), message: t("room.cleaningMorningMsg") },
