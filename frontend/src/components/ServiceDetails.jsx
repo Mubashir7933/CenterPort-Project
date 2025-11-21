@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { API_BASE_URL } from "../config";
 
 export default function ServiceDetails() {
   const { id } = useParams();
@@ -9,7 +10,7 @@ export default function ServiceDetails() {
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/services/${id}?lang=${i18n.language}`)
+    fetch(`${API_BASE_URL}/api/services/${id}?lang=${i18n.language}`)
       .then((res) => res.json())
       .then((data) => setService(data))
       .catch((err) => console.error("Failed to load service:", err));
