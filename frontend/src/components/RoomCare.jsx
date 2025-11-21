@@ -1,11 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { API_BASE_URL } from "../config";
 
 export default function RoomCare() {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
 
-  const whatsappNumber = "1234567890";
+  const whatsappNumber = "+90 533 466 76 67";
 
   const cleaningOptions = [
     { id: 1, label: t("room.cleaningMorning"), message: t("room.cleaningMorningMsg") },

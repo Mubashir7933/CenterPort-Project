@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { API_BASE_URL } from "../config";
 
 export default function ServicesList() {
   const [services, setServices] = useState([]);
@@ -11,7 +12,7 @@ export default function ServicesList() {
   useEffect(() => {
     setLoading(true);
 
-    fetch(`http://localhost:8080/api/services?lang=${i18n.language}`)
+    fetch(`${API_BASE_URL}/api/services?lang=${i18n.language}`)
       .then((res) => res.json())
       .then((data) => {
         setServices(data);

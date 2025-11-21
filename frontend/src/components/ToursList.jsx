@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import {API_BASE_URL, WHATSAPP_NUMBER} from "../config"
 
 export default function ToursList() {
   const [tours, setTours] = useState([]);
@@ -11,7 +12,7 @@ export default function ToursList() {
   useEffect(() => {
     setLoading(true);
 
-    fetch(`http://localhost:8080/api/services/3/tours?lang=${i18n.language}`)
+    fetch(`${API_BASE_URL}/api/services/3/tours?lang=${i18n.language}`)
       .then((res) => res.json())
       .then((data) => {
         setTours(data);
@@ -76,7 +77,7 @@ export default function ToursList() {
               )}
 
               <a
-                href={`https://wa.me/1234567890?text=${encodeURIComponent(tour.message)}`}
+                href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(tour.message)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-full inline-block"
