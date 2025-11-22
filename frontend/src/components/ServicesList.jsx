@@ -55,7 +55,10 @@ export default function ServicesList() {
               </h3>
               <p className="text-gray-600 mb-4">{service.description}</p>
 
-              <Button className="mt-6 bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded-lg transition w-full">
+              <Button
+  variant="black"
+  className="mt-6"
+>
   {service.name === "Tours" ? t("app.viewTours") : t("app.viewDetails")}
 </Button>
             </div>
