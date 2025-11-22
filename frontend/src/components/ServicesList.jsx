@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { API_BASE_URL } from "../config";
-import {Button} from "../ui/Button"
+import Button from "../ui/Button"
 
 export default function ServicesList() {
   const [services, setServices] = useState([]);
