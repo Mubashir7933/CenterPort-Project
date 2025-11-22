@@ -35,7 +35,7 @@ export default function ServicesList() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white py-12 px-4">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold text-center text-blue-700 mb-10">
+        <h2 className="text-4xl font-bold text-center text-black-700 mb-10">
           {t("app.services")}
         </h2>
 
