@@ -28,7 +28,7 @@ export default function ServiceDetails() {
     service: service.name,
   });
 
-  const whatsappUrl = `https://wa.me/1234567890?text=${encodeURIComponent(
+  const whatsappUrl = `https://wa.me/+905334667667?text=${encodeURIComponent(
     whatsappMessage
   )}`;
 
