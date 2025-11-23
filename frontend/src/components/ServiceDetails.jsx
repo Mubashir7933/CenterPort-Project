@@ -146,7 +146,7 @@ export default function ServiceDetails() {
                     </span>
 
                     <a
-                      href={`https://wa.me/1234567890?text=${encodeURIComponent(
+                      href={`https://wa.me/+905334667667?text=${encodeURIComponent(
                         tItem.message
                       )}`}
                       target="_blank"
