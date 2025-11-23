@@ -41,7 +41,7 @@ export default function App() {
       {/* Routes */}
       <Routes>
         <Route path="/" element={<ServicesList />} />
-        <Route path="/services/1" element={<RoomCare />} />
+        <Route path="/services/4" element={<RoomCare />} />
         <Route path="/services/:id" element={<ServiceDetails />} />
         <Route path="/tours" element={<ToursList />} />
       </Routes>

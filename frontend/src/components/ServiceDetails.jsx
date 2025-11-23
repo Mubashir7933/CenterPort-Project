@@ -162,47 +162,6 @@ export default function ServiceDetails() {
           </div>
         )}
 
-        {/* ---------- Airport Transfers Section ---------- */}
-        {service.transfers && (
-          <div className="mt-8">
-            <h2 className="text-2xl font-bold text-center text-gray-800 mb-4">
-              {t("details.transferOptions")}
-            </h2>
-
-            <div className="space-y-4">
-              {service.transfers.map((tItem) => (
-                <div
-                  key={tItem.id}
-                  className="border rounded-xl p-4 shadow-sm flex flex-col sm:flex-row justify-between items-center"
-                >
-                  <div className="text-center sm:text-left">
-                    <h3 className="text-lg font-semibold text-gray-800">
-                      {tItem.vehicle}
-                    </h3>
-                    <p className="text-gray-600 text-sm">{tItem.route}</p>
-                  </div>
-
-                  <div className="flex items-center gap-4 mt-3 sm:mt-0">
-                    <span className="text-blue-700 font-semibold text-lg">
-                      {tItem.price}
-                    </span>
-
-                    <a
-                      href={`https://wa.me/+905334667667?text=${encodeURIComponent(
-                        tItem.message
-                      )}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-full"
-                    >
-                      💬 {t("details.bookNow")}
-                    </a>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
 
         {/* WhatsApp Button */}
         <div className="flex justify-center mt-10">

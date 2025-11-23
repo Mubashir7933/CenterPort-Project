@@ -1,10 +1,36 @@
 [
-    {
-      "id": 4,
-      "name": "Уборка номера",
-      "description": "Ежедневная уборка и замена полотенец для вашего комфорта.",
-      "message": "Я хотел бы заказать уборку номера."
-    },
+  {
+    "id": 1,
+    "name": "Трансфер в аэропорт",
+    "description": "Частная встреча и доставка в аэропорт по запросу.",
+    "note": "Все цены фиксированы и включают дорожные сборы и плату за мосты.",
+    "transfers": [
+      {
+        "id": "1a",
+        "vehicle": "Обычное такси",
+        "route": "Istanbul Airport (IST)",
+        "price": "₺1800",
+        "currency": "TRY",
+        "message": "Я хотел бы заказать такси до аэропорта Стамбула (IST)."
+      },
+      {
+        "id": "1b",
+        "vehicle": "Обычное такси",
+        "route": "Sabiha Gökçen Airport (SAW)",
+        "price": "₺2100",
+        "currency": "TRY",
+        "message": "Я хотел бы заказать такси до аэропорта Сабиха Гёкчен (SAW)."
+      },
+      {
+        "id": "1c",
+        "vehicle": "Mercedes Vito (6-seater)",
+        "route": "All Istanbul Airports",
+        "price": "€70",
+        "currency": "EUR",
+        "message": "Я хотел бы заказать трансфер на Mercedes Vito."
+      }
+    ]
+  },
     {
       "id": 2,
       "name": "Прачечная",
@@ -66,37 +92,12 @@
         }
       ]
     },
+
     {
-      "id": 1,
-      "name": "Трансфер в аэропорт",
-      "description": "Частная встреча и доставка в аэропорт по запросу.",
-      "note": "Все цены фиксированы и включают дорожные сборы и плату за мосты.",
-      "transfers": [
-        {
-          "id": "1a",
-          "vehicle": "Обычное такси",
-          "route": "Istanbul Airport (IST)",
-          "price": "₺1800",
-          "currency": "TRY",
-          "message": "Я хотел бы заказать такси до аэропорта Стамбула (IST)."
-        },
-        {
-          "id": "1b",
-          "vehicle": "Обычное такси",
-          "route": "Sabiha Gökçen Airport (SAW)",
-          "price": "₺2100",
-          "currency": "TRY",
-          "message": "Я хотел бы заказать такси до аэропорта Сабиха Гёкчен (SAW)."
-        },
-        {
-          "id": "1c",
-          "vehicle": "Mercedes Vito (6-seater)",
-          "route": "All Istanbul Airports",
-          "price": "€70",
-          "currency": "EUR",
-          "message": "Я хотел бы заказать трансфер на Mercedes Vito."
-        }
-      ]
+      "id": 4,
+      "name": "Уборка номера",
+      "description": "Ежедневная уборка и замена полотенец для вашего комфорта.",
+      "message": "Я хотел бы заказать уборку номера."
     },
     {
       "id": 5,
